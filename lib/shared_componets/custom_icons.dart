@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-
+  
 class CustomIcons {
   FFIcons._();
 

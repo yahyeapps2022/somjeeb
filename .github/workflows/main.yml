@@ -20,7 +20,6 @@ jobs:
       - run: flutter doctor 
       - run: flutter clean
       - run: flutter pub get
-      - run: flutter packages pub run build_runner build --delete-conflicting-outputs
       - run: flutter build apk --target-platform android-arm 
       - uses: actions/upload-artifact@v1
         with:

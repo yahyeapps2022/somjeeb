@@ -14,7 +14,7 @@ description: A new Flutter project.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.17.0 <3.3.0"
+  sdk: ">=2.18.0 <3.3.0"
 
 dependencies:
   cloud_firestore: 4.2.0
@@ -74,6 +74,14 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  fonts:
+    - family: SentMoney
+      fonts:
+        - asset: assets/fonts/sent_money.ttf
+    - family: RecievedMoney
+      fonts:
+        - asset: assets/fonts/recieved_money.ttf
+
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg
@@ -104,3 +112,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  

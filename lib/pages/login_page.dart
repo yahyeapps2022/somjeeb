@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:somjeeb/services/auth_service.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../shared_componets/custom_icons.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -42,7 +43,7 @@ class LoginPage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Icon(FontAwesomeIcons.google),
+                        Icon(CustomIcons.sentMoney),
                         SizedBox(width: 10),
                         Text('Sign-in with Google',
                             style: TextStyle(fontSize: 16)),

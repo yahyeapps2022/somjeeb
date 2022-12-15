@@ -5,12 +5,12 @@ import 'package:somjeeb/services/auth_service.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LoginPage extends StatelessWidget {
+  LoginPage({Key? key}) : super(key: key);
+
   final Color primaryColor = Color(0xff18203d);
   final Color secondaryColor = Color(0xff232c51);
 
   final Color logoGreen = Color(0xff25bcbb);
-
-  LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {

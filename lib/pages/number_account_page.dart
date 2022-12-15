@@ -1,5 +1,8 @@
+import 'package:flutter/material.dart';
+
 class NumberAccountPage extends StatelessWidget {
-  const NumberAccountPage({super.key});
+  final String number;
+  NumberAccountPage({Key? key, required this.number}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,7 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 class RecievedMoneyPage extends StatelessWidget {
-  const RecievedMoneyPage({super.key});
+  RecievedMoneyPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

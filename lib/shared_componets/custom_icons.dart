@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
-  
+
 class CustomIcons {
-  FFIcons._();
+  CustomIcons();
 
   static const String _sentMoneyFamily = 'SentMoney';
   static const String _recievedMoneyFamily = 'RecievedMoney';

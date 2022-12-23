@@ -13,15 +13,16 @@ class AutoCreateTrans {
       FirebaseFirestore.instance.collection('unsaved_transactions');
 
   Future<void> saveTrans(
-      {String type = '',
-      String mobile = '',
-      String date = '',
-      String serviceName = '',
-      String sms = '',
-      String color = '',
-      double amount = 0}) async {
+      {required String qtype , required String type,
+      required String mobile ,
+      required String date,
+      required String serviceName ,
+      required String sms ,
+     required  String color ,
+     required  double amount }) async {
     return await transCollection
         .add({
+          'qtype':qtype,
           'amount': amount,
           'type': type,
           'mobile': mobile,
@@ -110,6 +111,7 @@ class AutoCreateTrans {
       if (validated(amount, date)) {
         print('is transfered');
         saveTrans(
+            qtype: 'sent',
             amount: amount,
             mobile: mobile,
             color: '#330000',
@@ -134,6 +136,7 @@ class AutoCreateTrans {
 
       if (validated(amount, date)) {
         saveTrans(
+            qtype: 'sent',
             amount: amount,
             mobile: mobile,
             color: '#330000',
@@ -156,6 +159,7 @@ class AutoCreateTrans {
 
       if (validated(amount, date)) {
         saveTrans(
+           qtype: 'received',
             amount: amount,
             mobile: mobile,
             color: '#006600',
@@ -177,6 +181,7 @@ class AutoCreateTrans {
       dynamic serviceName = me[0];
       if (validated(amount, date)) {
         saveTrans(
+           qtype: 'received',
             amount: amount,
             mobile: mobile,
             color: '#006600',
@@ -199,6 +204,7 @@ class AutoCreateTrans {
 
       if (validated(amount, date)) {
         saveTrans(
+           qtype: 'received',
             amount: amount,
             mobile: mobile,
             color: '#006600',
@@ -223,6 +229,7 @@ class AutoCreateTrans {
 
       if (validated(amount, date)) {
         saveTrans(
+           qtype: 'sent',
             amount: amount,
             mobile: mobile,
             color: '#330000',

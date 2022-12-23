@@ -8,9 +8,11 @@ class transModel {
   final String uid;
   final String? status;
   final String color;
-
+  final String qtype;
   transModel(
-      {required this.type,
+
+      {required this.qtype,
+       required this.type,
       required this.amount,
       required this.mobile,
       required this.date,

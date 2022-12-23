@@ -10,11 +10,10 @@ class SentMoneyPage extends StatefulWidget {
 }
 
 class _SentMoneyPageState extends State<SentMoneyPage> {
-  final CollectionReference transCollection =
-      FirebaseFirestore.instance.collection('transactions');
-
   final String? uid = FirebaseAuth.instance.currentUser?.uid;
- 
+  final Query<Map<String, dynamic>> transCollection =
+      FirebaseFirestore.instance.collection('transactions').where('uid', isEqualTo: FirebaseAuth.instance.currentUser?.uid).where('qtype', isEqualTo: "sent");
+
 
   @override
   Widget build(BuildContext context) {
@@ -22,28 +21,38 @@ class _SentMoneyPageState extends State<SentMoneyPage> {
       stream: transCollection.snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError) {
-          return Text('Something went wrong');
+          return Text(snapshot.error.toString());
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Text("Loading");
+          return const Text("Loading");
         }
 
-      var  listOfTrans = snapshot.data?.docs.map((doc) {
-      //print(doc.data);
-      return transModel(
-        type: doc.get('type') ?? '',
-        amount: doc.get('amount') ?? 0,
-        mobile: doc.get('mobile') ?? '',
-        date: doc.get('date') ?? '',
-        serviceName: doc.get('serviceName') ?? '',
-        sms: doc.get('sms') ?? '',
-        color: doc.get('color') ?? '',
-        uid: this.uid ?? '',
-      );
-    }).toList();
+        var listOfTrans = snapshot.data?.docs.map((doc) {
  
-        return TrasTabs(trasactions: listOfTrans );
+          return transModel(
+            qtype: 'sent',
+            type: doc.data().toString().contains('type') ? doc.get('type') : '',
+            amount: doc.data().toString().contains('amount')
+                ? double.parse(doc.get('amount').toString())
+                : 0,
+            mobile: doc.data().toString().contains('mobile')
+                ? doc.get('mobile')
+                : '',
+            date: doc.data().toString().contains('date')
+                ? doc.get('date').toString()
+                : '',
+            serviceName: doc.data().toString().contains('serviceName')
+                ? doc.get('serviceName').toString()
+                : '',
+            sms: doc.data().toString().contains('sms') ? doc.get('sms') : '',
+            color:
+                doc.data().toString().contains('color') ? doc.get('color') : '',
+            uid: this.uid ?? '',
+          );
+        }).toList();
+
+        return TrasTabs(trasactions: listOfTrans);
       },
     );
   }

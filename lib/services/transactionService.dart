@@ -74,7 +74,7 @@ class AutoCreateTrans {
   }
 
   bool isOtherTelecom(sms) {
-    if (sms.contains('Sahal') ||
+    if (sms.contains('Sahal') || 
         sms.contains('Telesom') ||
         sms.contains("Somnet Telecom")) {
       return true;
@@ -105,7 +105,7 @@ class AutoCreateTrans {
       dynamic amount = me[5].replaceAll(',', '').replaceAll('\$', '');
       dynamic mobile = me[7];
       dynamic date = getFormatedDate(me[9] + ' ' + me[10]);
-      String type = 'transferred';
+      String type = 'Dirtay';
       dynamic serviceName = me[0];
       // then save to firestore
       if (validated(amount, date)) {
@@ -131,7 +131,7 @@ class AutoCreateTrans {
           me[5].replaceAll(',', '').replaceAll('\$', ''); // amount deboule
       dynamic mobile = me[10].split(",")[0]; // mobile
       dynamic date = getFormatedDate(me[12] + ' ' + me[13]);
-      String type = 'paid';
+      String type = 'Dirtay';
       dynamic serviceName = me[0];
 
       if (validated(amount, date)) {
@@ -154,7 +154,7 @@ class AutoCreateTrans {
       dynamic amount = me[1].replaceAll(',', '').replaceAll('\$', '');
       dynamic mobile = me[5].split("(")[1].split(",")[0].replaceAll(')', '');
       dynamic date = getFormatedDate(me[5].split(",")[1] + ' ' + me[6]);
-      String type = 'Received';
+      String type = 'Laguusoodiray ';
       dynamic serviceName = me[0];
 
       if (validated(amount, date)) {
@@ -177,7 +177,7 @@ class AutoCreateTrans {
       dynamic amount = me[1].replaceAll(',', '').replaceAll('\$', '');
       dynamic mobile = me[6].split("(")[1].split(",")[0].replaceAll(')', '');
       dynamic date = getFormatedDate(me[6].split(",")[1] + ' ' + me[7]);
-      String type = 'Received';
+      String type = 'Laguusoodiray';
       dynamic serviceName = me[0];
       if (validated(amount, date)) {
         saveTrans(
@@ -199,7 +199,7 @@ class AutoCreateTrans {
       dynamic amount = me[1].replaceAll(',', '').replaceAll('\$', '');
       dynamic mobile = me[4];
       dynamic date = getFormatedDate(me[6] + ' ' + me[7]);
-      String type = 'Received';
+      String type = 'Laguusoodiray';
       dynamic serviceName = me[0];
 
       if (validated(amount, date)) {
@@ -220,7 +220,7 @@ class AutoCreateTrans {
 // Recharged from EvcPlus english
       // String test = '[-EVCPlus-] You have recharged \$0.25 to 252611541955, Your balance is \$2.01.';
       dynamic me = sms.split(" ");
-      String type = 'recharged';
+      String type = 'Dirtay';
 
       dynamic serviceName = me[0];
       dynamic amount = me[4].replaceAll(',', '').replaceAll('\$', '');

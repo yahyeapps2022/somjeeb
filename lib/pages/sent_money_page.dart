@@ -12,7 +12,7 @@ class SentMoneyPage extends StatefulWidget {
 class _SentMoneyPageState extends State<SentMoneyPage> {
   final String? uid = FirebaseAuth.instance.currentUser?.uid;
   final Query<Map<String, dynamic>> transCollection =
-      FirebaseFirestore.instance.collection('transactions').where('uid', isEqualTo: FirebaseAuth.instance.currentUser?.uid).where('qtype', isEqualTo: "sent");
+      FirebaseFirestore.instance.collection('transactions').where('uid', isEqualTo:"/users/KfbQt1tuTsJifuUpJQoa").where('qtype', isEqualTo: "sent");
 
 
   @override
@@ -25,10 +25,10 @@ class _SentMoneyPageState extends State<SentMoneyPage> {
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Text("Loading");
+          return const Center(child:CircularProgressIndicator());
         }
 
-        var listOfTrans = snapshot.data?.docs.map((doc) {
+        var listOfTrans = snapshot.data!.docs.map((doc) {
  
           return transModel(
             qtype: 'sent',
